@@ -1,0 +1,36 @@
+﻿@page "/todo"
+@rendermode InteractiveServer
+
+<PageTitle>ToDo</PageTitle>
+
+<MudText Typo="Typo.h2">
+    ToDo (@todos.Count(todo => !todo.IsDone))
+</MudText>
+
+<MudGrid>
+    <MudItem xs="12" md="12">
+        @foreach(var todo in todos) {
+            <MudCheckBox @bind-Value="todo.IsDone" Label="@todo.Title" Color="Color.Primary" />
+        }
+    </MudItem>
+</MudGrid>
+
+<MudPaper Class="m-1 p-3 bg-primary">
+    <MudInput Class="text-dark" Placeholder="something to do" @bind-Value="newTodo" />
+    <MudButton Variant="Variant.Filled" Color="Color.Dark" StartIcon="@Icons.Material.Filled.Add" @onclick="AddTodo">
+        <MudText Class="lh-sm" Typo="Typo.button">Add Item</MudText>
+    </MudButton>
+</MudPaper>
+
+@code {
+    private List<TodoItem> todos = new() { new TodoItem() { Title = "default" }};
+
+    private string? newTodo;
+
+    private void AddTodo() {
+        if (!string.IsNullOrWhiteSpace(newTodo)) {
+            todos.Add(new TodoItem { Title = newTodo });
+            newTodo = string.Empty;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+﻿<MudPaper Height="200px" Class="d-inline-flex py-3 bg-dark" Elevation="0">
+    <MudNavMenu Bordered="true" Class="mud-width-full">
+        <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+        <MudNavLink Href="/counter" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Calculate">Counter</MudNavLink>
+        <MudNavLink Href="/weather" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Cloud">Weather</MudNavLink>
+        <MudNavLink Href="/todo" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.List">To Do</MudNavLink>
+    </MudNavMenu>
+</MudPaper>
+
+@code
+{
+    bool open = false;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+}

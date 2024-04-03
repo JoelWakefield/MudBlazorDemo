@@ -1,0 +1,24 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<MudText Typo="Typo.h2">Counter</MudText>
+
+<MudText Typo="Typo.body1">Current Count: @currentCount</MudText>
+
+<MudButton Class="m-2" Variant="Variant.Filled" Color="Color.Dark" @onclick="IncrementCount">
+    <MudText Class="lh-sm" Typo="Typo.button">Increment</MudText>
+</MudButton>
+
+@code {
+    private int currentCount = 0;
+
+    [Parameter]
+    public int IncrementAmount { get; set; } = 1;
+
+    private void IncrementCount()
+    {
+        currentCount += IncrementAmount;
+    }
+}
